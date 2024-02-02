@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mysql_express/screens/add_task.dart';
 import 'package:flutter_mysql_express/utils/app_colors.dart';
 import 'package:flutter_mysql_express/widgets/button_widget.dart';
 import 'package:flutter_mysql_express/screens/all_tasks.dart';
@@ -44,10 +45,19 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height / 2.5,
             ),
-            ButtonWidget(
-                backgroundcolor: AppColors.mainColor,
-                text: "Add task",
-                textColor: Colors.white),
+            InkWell(
+              onTap: () {
+                Get.to(
+                  () => AddTask(),
+                  transition: Transition.zoom,
+                  duration: Duration(milliseconds: 500),
+                );
+              },
+              child: ButtonWidget(
+                  backgroundcolor: AppColors.mainColor,
+                  text: "Add task",
+                  textColor: Colors.white),
+            ),
             const SizedBox(
               height: 20,
             ),
