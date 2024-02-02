@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mysql_express/screens/add_task.dart';
+import 'package:flutter_mysql_express/screens/all_tasks.dart';
 import 'package:flutter_mysql_express/screens/home_screen.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AddTask(),
+      home: const AllTasks(),
     );
   }
 }
