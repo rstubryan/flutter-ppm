@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mysql_express/utils/app_colors.dart';
 import 'package:flutter_mysql_express/widgets/button_widget.dart';
+import 'package:flutter_mysql_express/screens/all_tasks.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -49,10 +51,17 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            ButtonWidget(
-                backgroundcolor: Colors.white,
-                text: "View All",
-                textColor: AppColors.smallTextColor),
+            InkWell(
+              onTap: () {
+                Get.to(() => AllTasks(),
+                    transition: Transition.fade,
+                    duration: Duration(seconds: 1));
+              },
+              child: ButtonWidget(
+                  backgroundcolor: Colors.white,
+                  text: "View All",
+                  textColor: AppColors.smallTextColor),
+            ),
           ],
         ),
         decoration: BoxDecoration(
