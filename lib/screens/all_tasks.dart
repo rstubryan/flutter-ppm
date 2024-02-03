@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mysql_express/controllers/data_controller.dart';
 import 'package:flutter_mysql_express/utils/app_colors.dart';
 import 'package:flutter_mysql_express/widgets/button_widget.dart';
 import 'package:flutter_mysql_express/widgets/task_widget.dart';
@@ -6,9 +7,14 @@ import 'package:get/get.dart';
 
 class AllTasks extends StatelessWidget {
   const AllTasks({super.key});
+  _loadData() async {
+    await Get.find<DataController>().getData();
+  }
 
   @override
   Widget build(BuildContext context) {
+    print(Get.find<DataController>().myData.length);
+    _loadData();
     List myData = ["Try harder", "Try smarter"];
     final leftEditIcon = Container(
       margin: const EdgeInsets.only(bottom: 10),
