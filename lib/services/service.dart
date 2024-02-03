@@ -15,7 +15,7 @@ class DataService extends GetConnect implements GetxService {
   Future<Response> postData(String uri, dynamic body) async {
     Response response = await post(
       "http://localhost:3000/create",
-      body,
+      AppConstants.BASE_URL + uri,
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },

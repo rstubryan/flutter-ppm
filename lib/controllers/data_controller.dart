@@ -19,6 +19,20 @@ class DataController extends GetxController {
       print("We did not get any data. Response: ${response.body}");
       print("Response Headers: ${response.headers}");
     }
+    _isLoading = false;
+  }
+
+  Future<void> getSingleData() async {
+    _isLoading = true;
+    Response response = await service.getData(AppConstants.GET_TASK);
+    if (response.statusCode == 200) {
+      print("We got the single data");
+      update();
+    } else {
+      print("We did not get any data. Response: ${response.body}");
+      print("Response Headers: ${response.headers}");
+    }
+    _isLoading = false;
   }
 
   Future<void> postData(String task, String taskDetail) async {
