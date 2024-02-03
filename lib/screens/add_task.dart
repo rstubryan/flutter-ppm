@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mysql_express/controllers/data_controller.dart';
+import 'package:flutter_mysql_express/screens/all_tasks.dart';
 import 'package:flutter_mysql_express/utils/app_colors.dart';
 import 'package:flutter_mysql_express/widgets/button_widget.dart';
 import 'package:flutter_mysql_express/widgets/error_warning_ms.dart';
@@ -77,7 +79,15 @@ class AddTask extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    _dataValidation();
+                    if (_dataValidation()) {
+                      Get.find<DataController>().postData(
+                          nameController.text.trim(),
+                          detailController.text.trim());
+                      Get.to(
+                        () => AllTasks(),
+                        transition: Transition.circularReveal,
+                      );
+                    }
                   },
                   child: ButtonWidget(
                       backgroundcolor: AppColors.mainColor,

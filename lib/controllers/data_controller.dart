@@ -28,9 +28,9 @@ class DataController extends GetxController {
     });
     if (response.statusCode == 200) {
       update();
+      print("Data post successfully");
     } else {
-      print("We did not get any data. Response: ${response.body}");
-      print("Response Headers: ${response.headers}");
+      print("Data post failed");
     }
   }
 }
