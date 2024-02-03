@@ -1,9 +1,10 @@
+import 'package:flutter_mysql_express/utils/app_constants.dart';
 import 'package:get/get.dart';
 
 class DataService extends GetConnect implements GetxService {
-  Future<Response> getData() async {
+  Future<Response> getData(String uri) async {
     Response response = await get(
-      "http://localhost:3000/tasks/",
+      AppConstants.BASE_URL + uri,
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -11,9 +12,9 @@ class DataService extends GetConnect implements GetxService {
     return response;
   }
 
-  Future<Response> postData(dynamic body) async {
+  Future<Response> postData(String uri, dynamic body) async {
     Response response = await post(
-      "http://localhost:3000/tasks",
+      "http://localhost:3000/create",
       body,
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',

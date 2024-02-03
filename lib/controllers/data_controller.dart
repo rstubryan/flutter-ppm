@@ -1,4 +1,5 @@
 import 'package:flutter_mysql_express/services/service.dart';
+import 'package:flutter_mysql_express/utils/app_constants.dart';
 import 'package:get/get.dart';
 
 class DataController extends GetxController {
@@ -9,7 +10,7 @@ class DataController extends GetxController {
   List<dynamic> get myData => _myData;
   Future<void> getData() async {
     _isLoading = true;
-    Response response = await service.getData();
+    Response response = await service.getData(AppConstants.GET_TASKS);
     if (response.statusCode == 200) {
       _myData = response.body;
       print("We got the data");
@@ -22,7 +23,7 @@ class DataController extends GetxController {
 
   Future<void> postData(String task, String taskDetail) async {
     _isLoading = true;
-    Response response = await service.postData({
+    Response response = await service.postData(AppConstants.POST_TASKS, {
       "task": task,
       "task_detail": taskDetail,
     });
