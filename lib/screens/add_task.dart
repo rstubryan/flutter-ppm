@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mysql_express/utils/app_colors.dart';
 import 'package:flutter_mysql_express/widgets/button_widget.dart';
+import 'package:flutter_mysql_express/widgets/error_warning_ms.dart';
 import 'package:flutter_mysql_express/widgets/textfield_widget.dart';
 import 'package:get/get.dart';
 
@@ -14,10 +15,10 @@ class AddTask extends StatelessWidget {
 
     bool _dataValidation() {
       if (nameController.text.trim() == '') {
-        Get.snackbar("Task name", "Task name is empty");
+        Message.taskErrorOrWarning("Task name", "Task name is empty");
         return false;
       } else if (detailController.text.trim() == '') {
-        Get.snackbar("Task detail", "Task detail is empty");
+        Message.taskErrorOrWarning("Task detail", "Task detail is empty");
         return false;
       }
       return true;
